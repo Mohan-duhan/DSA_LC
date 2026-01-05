@@ -9,13 +9,13 @@ public:
         unordered_map<int, int> mp;
 
         for (int j = 0; j < n; j++) {
-            mp[nums[j]]++;
-            currSum += nums[j];
+            mp[nums[j]]++;//maintain freq
+            currSum += nums[j];//generate sum
 
-            while (mp[nums[j]] > 1) {
-                mp[nums[i]]--;
-                currSum -= nums[i];
-                i++;
+            while (mp[nums[j]] > 1) {//if frequency of any on eelement increases start shrinking the window
+                mp[nums[i]]--;//firstly remove that ele
+                currSum -= nums[i];//then subs that val from sum 
+                i++;//move starting pointer ahead
             }
 
             if (j - i + 1 > k) {
