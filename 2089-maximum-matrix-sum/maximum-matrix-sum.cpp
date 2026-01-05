@@ -19,7 +19,7 @@ public:
         if (cnt % 2 == 0) {
             return sum;
         } else {
-            return (long long)(sum - 2*minEle);
+            return (long long)(sum - 2 * minEle);
         }
     }
 };
