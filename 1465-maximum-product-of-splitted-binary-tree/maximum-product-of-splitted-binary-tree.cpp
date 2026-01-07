@@ -1,16 +1,25 @@
 class Solution {
 public:
-    const int mod=1e9+7;
-    long long ans=INT_MIN, total=0;
-    int dfs(TreeNode* root){
-        if (!root) return 0;
-        int sum=root->val+dfs(root->left)+dfs(root->right);
-        ans=max(ans, (total-sum)*sum);
-        return sum;
+    const int MOD = 1e9 + 7;
+    long long ans = 0;
+    long long total = 0;
+
+    int dfs(TreeNode* root) {
+        if (root == nullptr) return 0;
+        return root->val + dfs(root->left) + dfs(root->right);
     }
+
+    int solve(TreeNode* root) {
+        if (root == nullptr) return 0;
+
+        int currSum = root->val + solve(root->left) + solve(root->right);
+        ans = max(ans, 1LL * currSum * (total - currSum));
+        return currSum;
+    }
+
     int maxProduct(TreeNode* root) {
-        total=dfs(root);
-        dfs(root);
-        return ans%mod;
+        total = dfs(root);
+        solve(root);
+        return ans % MOD;
     }
 };
