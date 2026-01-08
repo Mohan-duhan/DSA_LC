@@ -13,13 +13,11 @@ public:
         }
 
         int prod = nums1[i] * nums2[j];
-
-        int option1 = prod;
         int option2 = prod + solve(i + 1, j + 1, nums1, nums2);
         int option3 = solve(i + 1, j, nums1, nums2);
         int option4 = solve(i, j + 1, nums1, nums2);
 
-        return dp[i][j] = max({option1, option2, option3, option4});
+        return dp[i][j] = max({prod, option2, option3, option4});
     }
 
     int maxDotProduct(vector<int>& nums1, vector<int>& nums2) {
