@@ -4,7 +4,7 @@ public:
         int n = nums.size();
         int prefix = 1;
         int suffix = 1;
-        vector<int> ans(n);
+        vector<int> ans(n, 1);
 
         for (int i = 0; i < n; i++) {
             ans[i] = prefix;
@@ -15,7 +15,6 @@ public:
             ans[i] *= suffix;
             suffix *= nums[i];
         }
-
         return ans;
     }
 };
